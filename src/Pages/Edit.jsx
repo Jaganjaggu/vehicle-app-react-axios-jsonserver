@@ -38,7 +38,21 @@ function Edit() {
         const { sellerName, sellerPhone, brand, model, color, imagelink, price } = fetchABike;
         e.preventDefault()
         if (sellerName && sellerPhone && brand && model && color && imagelink && price) {
+            if (!sellerPhone || !/^\d{10}$/.test(sellerPhone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return; // Exit the function if validation fails
+            }
             await updateABike(id, fetchABike);  
+            setFetchABike({
+                id: id,
+                sellerName: '',
+                sellerPhone: '',
+                brand: '',
+                model: '',
+                color: '',
+                imagelink: '',
+                price: ''
+            })
             navigate('/view ')
         } else {
             alert("Please fill all the fields");

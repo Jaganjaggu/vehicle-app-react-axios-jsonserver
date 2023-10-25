@@ -30,10 +30,10 @@ function View() {
                                 <div className="bike-card">
                                     <img src={item.imagelink} alt="ImageLink" />
                                     <div>
-                                        <h3>{item.brand}</h3>
+                                        <h3 >{item.brand}</h3>
                                         <p>{item.model}</p>
                                         <p>{item.color}</p>
-                                        <p>{item.price}</p>
+                                        <p style={{color:"Red", fontWeight:"600", fontSize:"20px"}}><span style={{marginRight:"5px",fontSize:"25px"}}>₹</span>{item.price}</p>
                                         <div className="button-container">
                                             <button onClick={() => removeABike(item.id)} className="cart-button">Delete</button>
                                             <Link to={`/edit/${item.id}`}><button className="buy-button">Edit</button></Link>

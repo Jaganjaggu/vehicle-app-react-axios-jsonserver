@@ -12,9 +12,24 @@ function Sell({bikeInfo,setBikeInfo}) {
 
     const handleSubmit = async (e) => {
         const {sellerName,sellerPhone,brand,model,color,imagelink,price} = bikeInfo
+       
         e.preventDefault()
         if(sellerName && sellerPhone && brand && model && color && imagelink && price ){
+            if (!sellerPhone || !/^\d{10}$/.test(sellerPhone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return; // Exit the function if validation fails
+            }
             const response = await uploadBike(bikeInfo)
+            setBikeInfo({
+                id:'',
+                sellerName: '',
+                sellerPhone: '',
+                brand: '',
+                model: '',
+                color: '',
+                imagelink: '',
+                price: ''
+            })
             navigate('/view ')
 
         }else{
@@ -88,7 +103,7 @@ function Sell({bikeInfo,setBikeInfo}) {
                                 placeholder="Image link"
                             />
                              <input
-                                type="text"
+                                type="number"
                                 name="price"
                                 value={bikeInfo.price}
                                 onChange={(event) => handleChange(event, setBikeInfo)}
