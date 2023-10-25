@@ -1,0 +1,146 @@
+:root {
+    --nav-text: #FAF3F0;
+    --nav-btn: #FAF3F0;
+    --hover-color-btn-text: #040D12;
+    --textcolor: #ffffff;
+    --mainColor: #29335c;
+    --mainColorLight: #5767aa;
+    --secondaryColor: #db2b39;
+}
+
+
+
+.nav-bar {
+    /* position: fixed; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10%;
+    background-color: var(--nav-background);
+
+}
+
+.responsive_nav {
+    transform: translateY(100vh);
+}
+
+
+.responsive_nav .nav-links {
+    display: flex;
+    flex-direction: column;
+    line-height: 40px;
+}
+
+
+
+.nav-btn {
+    /* padding: 5px; */
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    /* color: var(--textColor); */
+    visibility: hidden;
+    display: none;
+    opacity: 0;
+    font-size: 1.8rem;
+}
+
+.theme-icon-fixed{
+    position: fixed;
+    right: 20px;
+    z-index: 2;
+    /* top:0px */
+    /* right: 20px; */
+}
+
+
+.nav-links,
+.links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-close-btn {
+    cursor: pointer;
+    visibility: hidden;
+    display: none;
+    opacity: 0;
+}
+
+
+@media (max-width: 650px) {
+    .nav-btn {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .nav-close-btn {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        height: 400px;
+    }
+
+    .links {
+        position: fixed;
+        top: -100vh;
+        left: 0;
+        height: 400px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background-color: var(--nav-background);
+        transition: 1s;
+        z-index: 1;
+    }
+}
+
+
+.nav-links li {
+    margin: 0 25px;
+}
+
+.nav-links a {
+    color: var(--nav-text);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    background: var(--nav-text);
+    height: 2px;
+    left: 0;
+    bottom: -6px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+.contact-btn {
+    padding: 10px 25px;
+    background-color: var();
+    border: none;
+    background-color: transparent;
+    color: var(--nav-text);
+    border: 1px solid var(--nav-btn);
+    transition: 0.4s;
+
+    &:hover {
+        background-color: var(--nav-btn);
+        color: var(--hover-color-btn-text);
+    }
+}

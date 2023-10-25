@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+// import Home from './Pages/Home';
+import LandingPage from './Pages/LandingPage';
+import Buy from './Pages/Buy';
+import Sell from './Pages/Sell';
+import View from './Pages/View';
+import { useState } from 'react';
+import Edit from './Pages/Edit';
 
 function App() {
+  const [bikeInfo, setBikeInfo] = useState({
+    sellerName: '',
+    sellerPhone: '',
+    brand: '',
+    model: '',
+    color: '',
+    imagelink: '',
+    price: ''
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Routes>
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/buy' element={<Buy />} />
+        <Route path='/view' element={<View />} />
+        <Route path='/sell' element={<Sell bikeInfo={bikeInfo} setBikeInfo={setBikeInfo}/>} />
+        <Route path='/edit/:id' element={<Edit />} />
+
+      </Routes>
+      <Footer />
     </div>
   );
 }
